@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using barbershop.Tables;
+namespace barbershop.Tables.DataSource
+{
+    public static class TableDataSource
+    {
+        public static Dictionary<ActiveTables, TableData> tablesData;
+
+        [Serializable]
+        public class TableData
+        {
+            public TableData(ITable tableSource)
+            {
+                //this.Table = table;
+                this.TableSource = tableSource;
+            }
+            public ITable TableSource;
+        }
+    }
+}
