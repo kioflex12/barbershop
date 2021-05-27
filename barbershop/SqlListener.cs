@@ -60,10 +60,6 @@ namespace barbershop
             return data;
         }
 
-        
-
-       
-
         public static void ExecuteQuery(string query)
         {
             MySqlCommand sqlCommand = new MySqlCommand(query, _sqlConnection);

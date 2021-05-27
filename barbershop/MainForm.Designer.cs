@@ -67,6 +67,7 @@ namespace barbershop
             this.id_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date_of_birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrintButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGrid)).BeginInit();
@@ -95,6 +96,7 @@ namespace barbershop
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.PrintButton);
             this.tabPage1.Controls.Add(this.DeleteClientsButton);
             this.tabPage1.Controls.Add(this.ClientsDataGrid);
             this.tabPage1.Controls.Add(this.InsertClientsButton);
@@ -403,6 +405,16 @@ namespace barbershop
             this.date_of_birthday.Name = "date_of_birthday";
             this.date_of_birthday.ReadOnly = true;
             // 
+            // PrintButton
+            // 
+            this.PrintButton.Location = new System.Drawing.Point(599, 235);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(75, 23);
+            this.PrintButton.TabIndex = 4;
+            this.PrintButton.Text = "Добавить";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,6 +476,7 @@ namespace barbershop
         private System.Windows.Forms.DataGridViewTextBoxColumn id_client;
         private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_of_birthday;
+        private System.Windows.Forms.Button PrintButton;
     }
 }
 

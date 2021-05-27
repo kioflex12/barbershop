@@ -14,7 +14,9 @@ namespace barbershop
 {
     public partial class MainForm : Form
     {
-        private ActiveTables currentTable;
+        private ActiveTables _currentTable;
+        private DataGridView _currentDataGrid;
+
         public MainForm()
         {
             InitializeComponent();
@@ -33,33 +35,43 @@ namespace barbershop
                     { ActiveTables.orders,   new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
                     
                 });
-            
 
+            SetNewTable();
 
+        }
+
+        private void SetNewTable()
+        {
+            _currentTable = (ActiveTables)tabControl.SelectedIndex;
+            _currentDataGrid = DataSource.tables[_currentTable].TableSource.JoinDataGrid;
         }
 
         private void TabControl_SelectionChanged(object sender, TabControlEventArgs e)
         {
-            currentTable = (ActiveTables)tabControl.SelectedIndex;
+            SetNewTable();
         }
+
         private void InsertButon_Click(object sender, EventArgs e)
         {
            
-            InsertForm insertForm = new InsertForm(currentTable);
+            InsertForm insertForm = new InsertForm(_currentTable);
             insertForm.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewCell cell in DataSource.tables[currentTable].TableSource.JoinDataGrid.SelectedCells)
+            foreach (DataGridViewCell cell in _currentDataGrid.SelectedCells)
             {
                 var rowIndex = cell.RowIndex;
-                SqlListener.ExecuteQuery(DataSource.tables[currentTable].TableSource.GetDeleteString(
-                    DataSource.tables[currentTable].TableSource.JoinDataGrid.Rows[rowIndex].Cells[0].Value.ToString(), currentTable));
+                SqlListener.ExecuteQuery(DataSource.tables[_currentTable].TableSource.GetDeleteString(
+                    _currentDataGrid.Rows[rowIndex].Cells[0].Value.ToString(), _currentTable));
             }
             DataSource.UpdateDataGridViews();
         }
 
-       
+        private void PrintButton_Click(object sender, EventArgs e)
+        {
+            ExcelSaver.Save(_currentDataGrid);
+        }
     }
 }
