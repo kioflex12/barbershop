@@ -25,7 +25,6 @@ namespace barbershop.Tables
                                                   ON 
                                                   orders.id_client = clients.id_client";
 
-
         public override List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
         {
             var tableName = Tables.EnumConverter.EnumToString(table);

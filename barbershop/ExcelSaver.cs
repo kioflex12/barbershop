@@ -12,11 +12,11 @@ namespace barbershop
     {
         public static async void Save(DataGridView dataGrid)
         {
-            string path = Application.ExecutablePath + $"{dataGrid.Name}.xlsx";
+            string name =  $"\\{dataGrid.Name}.xlsx";
             Excel.Application application = new Excel.Application();
             Excel.Workbook workbook = application.Workbooks.Add();
             Excel.Worksheet worksheet = workbook.ActiveSheet;
-            worksheet.Rows.AutoFit();
+            
             await Task.Run(() =>
             {
                 for (int i = 0; i < dataGrid.ColumnCount; i++)
@@ -30,11 +30,20 @@ namespace barbershop
                         worksheet.Rows[i + 2].Columns[j + 1] = dataGrid.Rows[i].Cells[j].Value;
                     }
                 }
-                MessageBox.Show("Сохранено");
+                
             });
+            worksheet.Columns.AutoFit();
+
             application.AlertBeforeOverwriting = false;
-            workbook.SaveAs(path);
+            var folderBrower = new FolderBrowserDialog();
+            if (folderBrower.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(folderBrower.SelectedPath + name);
+                MessageBox.Show("Сохранено");
+               
+            }
             application.Quit();
+
         }
     }
 }

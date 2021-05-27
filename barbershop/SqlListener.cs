@@ -15,7 +15,7 @@ namespace barbershop
     {
 
         private static MySqlConnection _sqlConnection;
-        private static readonly string datePattern = "dd.MM.yyyy";
+        private static readonly string _datePattern = "dd.MM.yyyy";
 
         public static void InitConnection()
         {
@@ -49,7 +49,7 @@ namespace barbershop
                     //var type = reader[i].GetType();
                     if (DateTime.TryParse(reader[i].ToString(), out var tempDate))
                     {
-                        data[data.Count - 1][i] = $"'{tempDate.ToString(datePattern)}";
+                        data[data.Count - 1][i] = $"'{tempDate.ToString(_datePattern)}";
                     }
                     else
                         data[data.Count - 1][i] = reader[i].ToString();

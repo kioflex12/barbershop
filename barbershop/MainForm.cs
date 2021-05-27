@@ -32,7 +32,7 @@ namespace barbershop
                     { ActiveTables.clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },
                     { ActiveTables.masters,  new TableDataSource.TableData(new Masters(MastersDataGrid))   },
                     { ActiveTables.services, new TableDataSource.TableData(new Services(ServicesDataGrid)) },
-                    { ActiveTables.orders,   new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
+                    { ActiveTables.orders,   new TableDataSource.TableData(new Orders(OrdersDataGrid))     },
                     
                 });
 
@@ -42,7 +42,7 @@ namespace barbershop
 
         private void SetNewTable()
         {
-            _currentTable = (ActiveTables)tabControl.SelectedIndex;
+            _currentTable = (ActiveTables)TabControl.SelectedIndex;
             _currentDataGrid = DataSource.tables[_currentTable].TableSource.JoinDataGrid;
         }
 
@@ -73,5 +73,7 @@ namespace barbershop
         {
             ExcelSaver.Save(_currentDataGrid);
         }
+
+      
     }
 }
