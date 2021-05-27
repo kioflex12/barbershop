@@ -7,30 +7,30 @@ using System.Windows.Forms;
 
 namespace barbershop.Tables
 {
-    class Orders : Table, ITable
+    class Orders : Table
     {
         public Orders(DataGridView dataGrid) : base(dataGrid)
         {
         }
 
-        public string UpdateCommand => @"SELECT orders.id_order, services.full_name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
-                                         FROM orders 
-                                         INNER JOIN services 
-                                         ON 
-                                         orders.id_service = services.id_service 
-                                         INNER JOIN masters 
-                                         ON 
-                                         orders.id_master = masters.id_master 
-                                         INNER JOIN clients 
-                                         ON 
-                                         orders.id_client = clients.id_client";
+        public override string UpdateCommand => @"SELECT orders.id_order, services.full_name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
+                                                  FROM orders 
+                                                  INNER JOIN services 
+                                                  ON 
+                                                  orders.id_service = services.id_service 
+                                                  INNER JOIN masters 
+                                                  ON 
+                                                  orders.id_master = masters.id_master 
+                                                  INNER JOIN clients 
+                                                  ON 
+                                                  orders.id_client = clients.id_client";
 
 
         public override List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
         {
             var tableName = Tables.EnumConverter.EnumToString(table);
             List<DataGridViewColumn> dataGridViewcolumns = new List<DataGridViewColumn>();
-            var columns = SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table)); ;
+            var columns = SqlListener.GetTableColumns(tableName) ;
             for (int i = 1; i < columns.Count; i++)
             {
                 string columName = columns[i][0];
@@ -44,7 +44,6 @@ namespace barbershop.Tables
                     foreach (var item in SqlListener.GetQueryResult(getCollectionCommand))
                     {
                         column.Items.AddRange(item);
-                        //column.CellValueChanged += new RaiseCellValueChanged(combobox_SelectedValueChanged);
                         
                     }
                     dataGridViewcolumns.Add(column);
@@ -55,9 +54,6 @@ namespace barbershop.Tables
             return dataGridViewcolumns;
         }
 
-        private void combobox_SelectedValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
     }
 }

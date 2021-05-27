@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace barbershop.Tables
 {
-    class Clients : Table, ITable
+    class Clients : Table
     {
         public Clients(DataGridView dataGrid) : base(dataGrid)
         {
         }
        
-        public string UpdateCommand => "select * from Clients";
+        public override string UpdateCommand => "select * from Clients";
     }
 }

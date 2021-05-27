@@ -13,12 +13,12 @@ namespace barbershop.Tables.DataSource
         [Serializable]
         public class TableData
         {
-            public TableData(ITable tableSource)
+            public TableData(Table tableSource)
             {
                 //this.Table = table;
                 this.TableSource = tableSource;
             }
-            public ITable TableSource;
+            public Table TableSource;
         }
     }
 }

@@ -15,12 +15,12 @@ namespace barbershop
     {
 
         private static MySqlConnection _sqlConnection;
-        private static string datePattern = "dd.MM.yyyy";
+        private static readonly string datePattern = "dd.MM.yyyy";
 
         public static void InitConnection()
         {
             string connectionString = @"server = localhost; user id = root;  database = barbershop; password=123; pooling = false; convert zero datetime=true";
-            
+
             _sqlConnection = new MySqlConnection(connectionString);
             _sqlConnection.Open();
         }
@@ -47,7 +47,7 @@ namespace barbershop
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     //var type = reader[i].GetType();
-                    if (DateTime.TryParse(reader[i].ToString(),out var tempDate))
+                    if (DateTime.TryParse(reader[i].ToString(), out var tempDate))
                     {
                         data[data.Count - 1][i] = $"'{tempDate.ToString(datePattern)}";
                     }
@@ -59,66 +59,10 @@ namespace barbershop
             reader.Close();
             return data;
         }
+
         
-        public static string GetInsertString(DataGridViewRow row, ActiveTables table)
-        {
-            string tableName = EnumConverter.EnumToString(table);
 
-
-            var dataTypes = GetTableColumns(tableName);
-            dataTypes.RemoveAt(0);
-            string columns = "";
-            
-            
-            for (int i = 0; i < dataTypes.Count; i++)
-            {
-                columns += $"{ dataTypes[i][0]}";
-                if (dataTypes[i] != dataTypes.Last())
-                {
-                    columns += ",";
-                }
-            }
-            string insertString = $"insert into {tableName}({columns}) values (";
-            for (int i = 0; i < dataTypes.Count(); i++)
-            {
-                string value = row.Cells[i].Tag != null ? row.Cells[i].Tag.ToString(): row.Cells[i].Value.ToString();
-
-                switch (dataTypes[i][1].ToString())
-                {
-                    case "int":
-                        insertString += value;
-                        break;
-                    case "date":
-                        if (DateTime.TryParse(value, out var date))
-                        {
-                            insertString += $"'{date:yyyy.MM.dd}'";
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                        break;
-                    case "varchar":
-                        insertString += $"'{value}'";
-                        break;
-                }
-                if (i == dataTypes.Count() - 1)
-                {
-                    insertString += ")";
-                }
-                else
-                    insertString += ",";
-            }
-            return insertString;
-        }
-
-        public static string GetDeleteString(ActiveTables table, string key)
-        {
-            var tableName = EnumConverter.EnumToString(table);
-            var columns = GetTableColumns(tableName);
-            return $"delete from {tableName} where {columns[0][0]}='{key}'";
-           
-        }
+       
 
         public static void ExecuteQuery(string query)
         {

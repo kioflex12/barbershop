@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace barbershop.Tables
 {
-    class Services : Table, ITable
+    class Services : Table
     {
         public Services(DataGridView dataGrid) : base(dataGrid)
         {
         }
-        public string UpdateCommand => "select * from Services";
+        public override string UpdateCommand => "select * from Services";
     }
 }

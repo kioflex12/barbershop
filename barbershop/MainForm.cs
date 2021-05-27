@@ -30,7 +30,7 @@ namespace barbershop
                     { ActiveTables.clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },
                     { ActiveTables.masters,  new TableDataSource.TableData(new Masters(MastersDataGrid))   },
                     { ActiveTables.services, new TableDataSource.TableData(new Services(ServicesDataGrid)) },
-                    { ActiveTables.orders, new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
+                    { ActiveTables.orders,   new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
                     
                 });
             
@@ -54,7 +54,8 @@ namespace barbershop
             foreach (DataGridViewCell cell in DataSource.tables[currentTable].TableSource.JoinDataGrid.SelectedCells)
             {
                 var rowIndex = cell.RowIndex;
-                SqlListener.ExecuteQuery(SqlListener.GetDeleteString(currentTable, DataSource.tables[currentTable].TableSource.JoinDataGrid.Rows[rowIndex].Cells[0].Value.ToString()));
+                SqlListener.ExecuteQuery(DataSource.tables[currentTable].TableSource.GetDeleteString(
+                    DataSource.tables[currentTable].TableSource.JoinDataGrid.Rows[rowIndex].Cells[0].Value.ToString(), currentTable));
             }
             DataSource.UpdateDataGridViews();
         }

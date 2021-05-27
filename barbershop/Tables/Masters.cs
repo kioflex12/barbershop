@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace barbershop.Tables
 {
-    internal class Masters : Table, ITable
+    internal class Masters : Table
     {
         public Masters(DataGridView dataGrid) : base(dataGrid)
         {
         }
 
-        public string UpdateCommand => "select * from Masters";
+        public override string UpdateCommand => "select * from Masters";
 
 
     }

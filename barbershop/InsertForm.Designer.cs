@@ -45,7 +45,7 @@ namespace barbershop
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Добавить";
             this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // InsertDataGridView
             // 

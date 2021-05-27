@@ -30,15 +30,12 @@ namespace barbershop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DeleteClientsButton = new System.Windows.Forms.Button();
             this.ClientsDataGrid = new System.Windows.Forms.DataGridView();
-            this.id_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date_of_birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InsertClientsButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DeleteMastersButton = new System.Windows.Forms.Button();
@@ -60,13 +57,16 @@ namespace barbershop
             this.DeleteOrderButton = new System.Windows.Forms.Button();
             this.InsertOrderButton = new System.Windows.Forms.Button();
             this.OrdersDataGridView = new System.Windows.Forms.DataGridView();
-            this.clientsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.id_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_Service_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price_service_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_Client_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date_of_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name_Master_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.id_client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date_of_birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGrid)).BeginInit();
@@ -123,38 +123,13 @@ namespace barbershop
             this.ClientsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ClientsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_client,
-            this.date_of_birthday,
-            this.full_name});
+            this.full_name,
+            this.date_of_birthday});
             this.ClientsDataGrid.Location = new System.Drawing.Point(3, 0);
             this.ClientsDataGrid.Name = "ClientsDataGrid";
             this.ClientsDataGrid.ReadOnly = true;
             this.ClientsDataGrid.Size = new System.Drawing.Size(550, 414);
             this.ClientsDataGrid.TabIndex = 2;
-            // 
-            // id_client
-            // 
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.id_client.DefaultCellStyle = dataGridViewCellStyle5;
-            this.id_client.HeaderText = "ID Клиента";
-            this.id_client.Name = "id_client";
-            this.id_client.ReadOnly = true;
-            // 
-            // date_of_birthday
-            // 
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.date_of_birthday.DefaultCellStyle = dataGridViewCellStyle6;
-            this.date_of_birthday.HeaderText = "Дата рождения";
-            this.date_of_birthday.Name = "date_of_birthday";
-            this.date_of_birthday.ReadOnly = true;
-            // 
-            // full_name
-            // 
-            this.full_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.full_name.HeaderText = "ФИО";
-            this.full_name.Name = "full_name";
-            this.full_name.ReadOnly = true;
             // 
             // InsertClientsButton
             // 
@@ -363,10 +338,6 @@ namespace barbershop
             this.OrdersDataGridView.Size = new System.Drawing.Size(646, 408);
             this.OrdersDataGridView.TabIndex = 1;
             // 
-            // clientsBindingSource1
-            // 
-            this.clientsBindingSource1.DataMember = "Clients";
-            // 
             // id_order
             // 
             this.id_order.HeaderText = "ID Заказа";
@@ -402,6 +373,35 @@ namespace barbershop
             this.name_Master_order.HeaderText = "Мастер";
             this.name_Master_order.Name = "name_Master_order";
             this.name_Master_order.ReadOnly = true;
+            // 
+            // clientsBindingSource1
+            // 
+            this.clientsBindingSource1.DataMember = "Clients";
+            // 
+            // id_client
+            // 
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.id_client.DefaultCellStyle = dataGridViewCellStyle1;
+            this.id_client.HeaderText = "ID Клиента";
+            this.id_client.Name = "id_client";
+            this.id_client.ReadOnly = true;
+            // 
+            // full_name
+            // 
+            this.full_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.full_name.HeaderText = "ФИО";
+            this.full_name.Name = "full_name";
+            this.full_name.ReadOnly = true;
+            // 
+            // date_of_birthday
+            // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.date_of_birthday.DefaultCellStyle = dataGridViewCellStyle2;
+            this.date_of_birthday.HeaderText = "Дата рождения";
+            this.date_of_birthday.Name = "date_of_birthday";
+            this.date_of_birthday.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -440,9 +440,6 @@ namespace barbershop
         private System.Windows.Forms.DataGridView ServicesDataGrid;
         private System.Windows.Forms.DataGridView MastersDataGrid;
         private System.Windows.Forms.DataGridView OrdersDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_client;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date_of_birthday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
         private System.Windows.Forms.Button DeleteClientsButton;
         private System.Windows.Forms.Button DeleteMastersButton;
         private System.Windows.Forms.Button InsertMastersButton;
@@ -464,6 +461,9 @@ namespace barbershop
         private System.Windows.Forms.DataGridViewTextBoxColumn id_Client_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_of_service;
         private System.Windows.Forms.DataGridViewTextBoxColumn name_Master_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date_of_birthday;
     }
 }
 
