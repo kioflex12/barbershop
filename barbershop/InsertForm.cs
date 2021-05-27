@@ -13,24 +13,28 @@ namespace barbershop
 {
     public partial class InsertForm : Form
     {
-        private DataGridView _currentDataGridView;
         private ActiveTables Table { get; set; }
 
-        public InsertForm(DataGridView dataGridView, ActiveTables table)
+        public InsertForm(ActiveTables table)
         {
             InitializeComponent();
-            _currentDataGridView = dataGridView;
+            
             Table = table;
 
-
-            foreach (DataGridViewColumn column in dataGridView.Columns)
+            var columns = SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table));
+            for (int i = 1; i < columns.Count; i++)
             {
-                if (column.Name.Contains("id"))
-                {
-                    continue;
-                }
-                InsertDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { Name = column.Name, HeaderText = column.HeaderText });
+                string columName = columns[i][0];
+                InsertDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
             }
+            //foreach (string[] column in SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table)))
+            //{
+            //    if (column[0].Contains("id"))
+            //    {
+            //        continue;
+            //    }
+            //    InsertDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { Name = column[0], HeaderText = column[0]});
+            //}
 
 
         }
@@ -65,7 +69,7 @@ namespace barbershop
         {
             for (int i = 0; i < InsertDataGridView.Rows.Count - 1; i++)
             {
-                for (int j = 0; j < InsertDataGridView.Columns.Count - 1; j++)
+                for (int j = 0; j < InsertDataGridView.Columns.Count; j++)
                 {
                     if (string.IsNullOrEmpty(InsertDataGridView.Rows[i].Cells[j].Value?.ToString()))
                     {

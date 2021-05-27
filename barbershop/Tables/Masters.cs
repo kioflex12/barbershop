@@ -16,9 +16,5 @@ namespace barbershop.Tables
         public string UpdateCommand => "select * from Masters";
 
 
-        public void Delete(string value)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

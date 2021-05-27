@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\Orders.cs" />
     <Compile Include="Tables\Services.cs" />
     <Compile Include="Tables\Table.cs" />
     <Compile Include="Tables\TableEnum.cs" />

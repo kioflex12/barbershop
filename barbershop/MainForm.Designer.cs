@@ -30,8 +30,8 @@ namespace barbershop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DeleteClientsButton = new System.Windows.Forms.Button();
@@ -50,15 +50,23 @@ namespace barbershop
             this.date_of_employment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.work_experiance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.DeleteServicesButton = new System.Windows.Forms.Button();
+            this.InsertServicesButton = new System.Windows.Forms.Button();
             this.ServicesDataGrid = new System.Windows.Forms.DataGridView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.clientsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.id_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteServicesButton = new System.Windows.Forms.Button();
-            this.InsertServicesButton = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.OrdersDataGridView = new System.Windows.Forms.DataGridView();
+            this.clientsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.id_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_service_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price_service_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_client_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date_of_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name_master_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteOrderButton = new System.Windows.Forms.Button();
+            this.InsertOrderButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGrid)).BeginInit();
@@ -67,7 +75,7 @@ namespace barbershop
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServicesDataGrid)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +89,7 @@ namespace barbershop
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(795, 448);
+            this.tabControl.Size = new System.Drawing.Size(824, 448);
             this.tabControl.TabIndex = 0;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_SelectionChanged);
             // 
@@ -125,18 +133,18 @@ namespace barbershop
             // 
             // id_client
             // 
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.id_client.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.id_client.DefaultCellStyle = dataGridViewCellStyle1;
             this.id_client.HeaderText = "ID Клиента";
             this.id_client.Name = "id_client";
             this.id_client.ReadOnly = true;
             // 
             // date_of_birthday
             // 
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.date_of_birthday.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.date_of_birthday.DefaultCellStyle = dataGridViewCellStyle2;
             this.date_of_birthday.HeaderText = "Дата рождения";
             this.date_of_birthday.Name = "date_of_birthday";
             this.date_of_birthday.ReadOnly = true;
@@ -246,66 +254,10 @@ namespace barbershop
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(787, 422);
+            this.tabPage3.Size = new System.Drawing.Size(816, 422);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Услуги";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // ServicesDataGrid
-            // 
-            this.ServicesDataGrid.AllowUserToAddRows = false;
-            this.ServicesDataGrid.AllowUserToDeleteRows = false;
-            this.ServicesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ServicesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_service,
-            this.name,
-            this.price});
-            this.ServicesDataGrid.Location = new System.Drawing.Point(6, 6);
-            this.ServicesDataGrid.Name = "ServicesDataGrid";
-            this.ServicesDataGrid.ReadOnly = true;
-            this.ServicesDataGrid.Size = new System.Drawing.Size(553, 408);
-            this.ServicesDataGrid.TabIndex = 0;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.dataGridView3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(787, 422);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Заказы";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(553, 408);
-            this.dataGridView3.TabIndex = 1;
-            // 
-            // clientsBindingSource1
-            // 
-            this.clientsBindingSource1.DataMember = "Clients";
-            // 
-            // id_service
-            // 
-            this.id_service.HeaderText = "ID Улуги";
-            this.id_service.Name = "id_service";
-            this.id_service.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Название услуги";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Стоимость";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
             // 
             // DeleteServicesButton
             // 
@@ -327,11 +279,135 @@ namespace barbershop
             this.InsertServicesButton.UseVisualStyleBackColor = true;
             this.InsertServicesButton.Click += new System.EventHandler(this.InsertButon_Click);
             // 
+            // ServicesDataGrid
+            // 
+            this.ServicesDataGrid.AllowUserToAddRows = false;
+            this.ServicesDataGrid.AllowUserToDeleteRows = false;
+            this.ServicesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ServicesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_service,
+            this.name,
+            this.price});
+            this.ServicesDataGrid.Location = new System.Drawing.Point(6, 6);
+            this.ServicesDataGrid.Name = "ServicesDataGrid";
+            this.ServicesDataGrid.ReadOnly = true;
+            this.ServicesDataGrid.Size = new System.Drawing.Size(553, 408);
+            this.ServicesDataGrid.TabIndex = 0;
+            // 
+            // id_service
+            // 
+            this.id_service.HeaderText = "ID Улуги";
+            this.id_service.Name = "id_service";
+            this.id_service.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Название услуги";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Стоимость";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.DeleteOrderButton);
+            this.tabPage4.Controls.Add(this.InsertOrderButton);
+            this.tabPage4.Controls.Add(this.OrdersDataGridView);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(816, 422);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Заказы";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // OrdersDataGridView
+            // 
+            this.OrdersDataGridView.AllowUserToAddRows = false;
+            this.OrdersDataGridView.AllowUserToDeleteRows = false;
+            this.OrdersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrdersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_order,
+            this.name_service_order,
+            this.price_service_order,
+            this.id_client_order,
+            this.date_of_service,
+            this.name_master_order});
+            this.OrdersDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.OrdersDataGridView.Name = "OrdersDataGridView";
+            this.OrdersDataGridView.ReadOnly = true;
+            this.OrdersDataGridView.Size = new System.Drawing.Size(646, 408);
+            this.OrdersDataGridView.TabIndex = 1;
+            // 
+            // clientsBindingSource1
+            // 
+            this.clientsBindingSource1.DataMember = "Clients";
+            // 
+            // id_order
+            // 
+            this.id_order.HeaderText = "ID Заказа";
+            this.id_order.Name = "id_order";
+            this.id_order.ReadOnly = true;
+            // 
+            // name_service_order
+            // 
+            this.name_service_order.HeaderText = "Услуга";
+            this.name_service_order.Name = "name_service_order";
+            this.name_service_order.ReadOnly = true;
+            // 
+            // price_service_order
+            // 
+            this.price_service_order.HeaderText = "Стоимость";
+            this.price_service_order.Name = "price_service_order";
+            this.price_service_order.ReadOnly = true;
+            // 
+            // id_client_order
+            // 
+            this.id_client_order.HeaderText = "Клиент";
+            this.id_client_order.Name = "id_client_order";
+            this.id_client_order.ReadOnly = true;
+            // 
+            // date_of_service
+            // 
+            this.date_of_service.HeaderText = "Дата оформления заказ";
+            this.date_of_service.Name = "date_of_service";
+            this.date_of_service.ReadOnly = true;
+            // 
+            // name_master_order
+            // 
+            this.name_master_order.HeaderText = "Мастер";
+            this.name_master_order.Name = "name_master_order";
+            this.name_master_order.ReadOnly = true;
+            // 
+            // DeleteOrderButton
+            // 
+            this.DeleteOrderButton.Location = new System.Drawing.Point(736, 388);
+            this.DeleteOrderButton.Name = "DeleteOrderButton";
+            this.DeleteOrderButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteOrderButton.TabIndex = 7;
+            this.DeleteOrderButton.Text = "Удалить";
+            this.DeleteOrderButton.UseVisualStyleBackColor = true;
+            this.DeleteOrderButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // InsertOrderButton
+            // 
+            this.InsertOrderButton.Location = new System.Drawing.Point(655, 388);
+            this.InsertOrderButton.Name = "InsertOrderButton";
+            this.InsertOrderButton.Size = new System.Drawing.Size(75, 23);
+            this.InsertOrderButton.TabIndex = 6;
+            this.InsertOrderButton.Text = "Добавить";
+            this.InsertOrderButton.UseVisualStyleBackColor = true;
+            this.InsertOrderButton.Click += new System.EventHandler(this.InsertButon_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 448);
+            this.ClientSize = new System.Drawing.Size(824, 448);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
@@ -345,7 +421,7 @@ namespace barbershop
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ServicesDataGrid)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -363,7 +439,7 @@ namespace barbershop
         private System.Windows.Forms.DataGridView ClientsDataGrid;
         private System.Windows.Forms.DataGridView ServicesDataGrid;
         private System.Windows.Forms.DataGridView MastersDataGrid;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView OrdersDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_client;
         private System.Windows.Forms.DataGridViewTextBoxColumn date_of_birthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
@@ -380,6 +456,14 @@ namespace barbershop
         private System.Windows.Forms.DataGridViewTextBoxColumn id_service;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_service_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price_service_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_client_order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date_of_service;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name_master_order;
+        private System.Windows.Forms.Button DeleteOrderButton;
+        private System.Windows.Forms.Button InsertOrderButton;
     }
 }
 

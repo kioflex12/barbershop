@@ -15,10 +15,5 @@ namespace barbershop.Tables
         }
        
         public string UpdateCommand => "select * from Clients";
-
-
-        
-
-        
     }
 }

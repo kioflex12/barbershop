@@ -30,6 +30,7 @@ namespace barbershop
                     { ActiveTables.Clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },
                     { ActiveTables.Masters,  new TableDataSource.TableData(new Masters(MastersDataGrid))   },
                     { ActiveTables.Services, new TableDataSource.TableData(new Services(ServicesDataGrid)) },
+                    { ActiveTables.Orders, new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
                     
                 });
             
@@ -44,7 +45,7 @@ namespace barbershop
         private void InsertButon_Click(object sender, EventArgs e)
         {
            
-            InsertForm insertForm = new InsertForm(DataSource.tables[currentTable].TableSource.JoinDataGrid, currentTable );
+            InsertForm insertForm = new InsertForm(currentTable);
             insertForm.ShowDialog();
         }
 
