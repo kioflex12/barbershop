@@ -13,7 +13,7 @@ namespace barbershop.Tables
         {
         }
 
-        public string UpdateCommand => @"SELECT orders.id_order, services.name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
+        public string UpdateCommand => @"SELECT orders.id_order, services.full_name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
                                          FROM orders 
                                          INNER JOIN services 
                                          ON 
@@ -24,5 +24,40 @@ namespace barbershop.Tables
                                          INNER JOIN clients 
                                          ON 
                                          orders.id_client = clients.id_client";
+
+
+        public override List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
+        {
+            var tableName = Tables.EnumConverter.EnumToString(table);
+            List<DataGridViewColumn> dataGridViewcolumns = new List<DataGridViewColumn>();
+            var columns = SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table)); ;
+            for (int i = 1; i < columns.Count; i++)
+            {
+                string columName = columns[i][0];
+                var parsedName = columns[i][0].Split('_');
+
+                if ((parsedName.Count() > 1) && (Enum.TryParse<ActiveTables>(parsedName[1]+"s", out var tableFromId)))
+                {
+                    string getCollectionCommand = $"select full_name from {tableFromId} ";
+                    var column = new DataGridViewComboBoxColumn() { Name = columName };
+                    
+                    foreach (var item in SqlListener.GetQueryResult(getCollectionCommand))
+                    {
+                        column.Items.AddRange(item);
+                        //column.CellValueChanged += new RaiseCellValueChanged(combobox_SelectedValueChanged);
+                        
+                    }
+                    dataGridViewcolumns.Add(column);
+                }
+                else
+                    dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
+            }
+            return dataGridViewcolumns;
+        }
+
+        private void combobox_SelectedValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

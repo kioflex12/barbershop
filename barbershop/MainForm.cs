@@ -27,10 +27,10 @@ namespace barbershop
             DataSource.SetDataAdditictions(
                 TableDataSource.tablesData = new Dictionary<ActiveTables, TableDataSource.TableData>()
                 {
-                    { ActiveTables.Clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },
-                    { ActiveTables.Masters,  new TableDataSource.TableData(new Masters(MastersDataGrid))   },
-                    { ActiveTables.Services, new TableDataSource.TableData(new Services(ServicesDataGrid)) },
-                    { ActiveTables.Orders, new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
+                    { ActiveTables.clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },
+                    { ActiveTables.masters,  new TableDataSource.TableData(new Masters(MastersDataGrid))   },
+                    { ActiveTables.services, new TableDataSource.TableData(new Services(ServicesDataGrid)) },
+                    { ActiveTables.orders, new TableDataSource.TableData(new Orders(OrdersDataGridView)) },
                     
                 });
             

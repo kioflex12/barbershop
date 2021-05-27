@@ -1,4 +1,5 @@
 ﻿using barbershop.Tables;
+using barbershop.Tables.DataSource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,23 +23,18 @@ namespace barbershop
             Table = table;
 
             var columns = SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table));
-            for (int i = 1; i < columns.Count; i++)
-            {
-                string columName = columns[i][0];
-                InsertDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
-            }
-            //foreach (string[] column in SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table)))
+            InsertDataGridView.Columns.AddRange(TableDataSource.tablesData[table].TableSource.GetColumnForDataGridView(table).ToArray());
+            InsertDataGridView.DataError += new DataGridViewDataErrorEventHandler(dgComoBoxError);
+            //for (int i = 1; i < columns.Count; i++)
             //{
-            //    if (column[0].Contains("id"))
-            //    {
-            //        continue;
-            //    }
-            //    InsertDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { Name = column[0], HeaderText = column[0]});
+            //    string columName = columns[i][0];
+                
             //}
 
-
         }
-
+        private void dgComoBoxError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (CheckFildComplete())
@@ -79,6 +75,28 @@ namespace barbershop
                 }
             }
             return true;
+        }
+        
+        private void InsertDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (InsertDataGridView.Rows.Count != 0)
+            {
+                var curentCell = InsertDataGridView.Rows?[e.RowIndex].Cells[e.ColumnIndex];
+              
+                if (curentCell.GetType().Name.Equals(typeof(DataGridViewComboBoxCell).Name))
+                {
+                    //var cs = (DataGridViewComboBoxCell)curentCell;
+                    if (!Int32.TryParse(curentCell.Value.ToString(),out _))
+                    {
+                        string columnName = InsertDataGridView.Columns[e.ColumnIndex].HeaderText;
+                        var query = $"select {columnName} from {columnName.Split('_')[1]}s where full_name = '{curentCell.Value}'";
+                        curentCell.Tag = SqlListener.GetQueryResult(query)[0][0];
+
+                    }
+                    
+                }
+            }
         }
     }
 }

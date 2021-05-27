@@ -12,10 +12,10 @@ namespace barbershop.Tables
     }
     public enum ActiveTables
     {
-        Clients,
-        Masters,
-        Services,
-        Orders,
+        clients,
+        masters,
+        services,
+        orders,
        
 
     }

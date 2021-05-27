@@ -81,13 +81,15 @@ namespace barbershop
             string insertString = $"insert into {tableName}({columns}) values (";
             for (int i = 0; i < dataTypes.Count(); i++)
             {
+                string value = row.Cells[i].Tag != null ? row.Cells[i].Tag.ToString(): row.Cells[i].Value.ToString();
+
                 switch (dataTypes[i][1].ToString())
                 {
                     case "int":
-                        insertString += row.Cells[i].Value.ToString();
+                        insertString += value;
                         break;
                     case "date":
-                        if (DateTime.TryParse(row.Cells[i].Value.ToString(),out var date))
+                        if (DateTime.TryParse(value, out var date))
                         {
                             insertString += $"'{date:yyyy.MM.dd}'";
                         }
@@ -97,7 +99,7 @@ namespace barbershop
                         }
                         break;
                     case "varchar":
-                        insertString += $"'{row.Cells[i].Value}'";
+                        insertString += $"'{value}'";
                         break;
                 }
                 if (i == dataTypes.Count() - 1)

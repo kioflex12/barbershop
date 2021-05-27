@@ -54,6 +54,7 @@ namespace barbershop
             this.InsertDataGridView.Name = "InsertDataGridView";
             this.InsertDataGridView.Size = new System.Drawing.Size(338, 150);
             this.InsertDataGridView.TabIndex = 1;
+            this.InsertDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.InsertDataGridView_CellValueChanged);
             // 
             // errorProvider
             // 

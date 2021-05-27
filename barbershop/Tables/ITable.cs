@@ -11,5 +11,6 @@ namespace barbershop
     {
         string UpdateCommand { get; }
         DataGridView JoinDataGrid { get; set; }
+        List<DataGridViewColumn> GetColumnForDataGridView(Tables.ActiveTables table);
     }
 }

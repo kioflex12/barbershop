@@ -99,7 +99,7 @@
     <Compile Include="InsertForm.Designer.cs">
       <DependentUpon>InsertForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ITable.cs" />
+    <Compile Include="Tables\ITable.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

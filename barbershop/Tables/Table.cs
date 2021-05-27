@@ -15,5 +15,18 @@ namespace barbershop.Tables
         {
             JoinDataGrid = dataGrid;
         }
+
+        public virtual List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
+        {
+            List<DataGridViewColumn> dataGridViewcolumns = new List<DataGridViewColumn>();
+            var columns = SqlListener.GetTableColumns(Tables.EnumConverter.EnumToString(table));
+            for (int i = 1; i < columns.Count; i++)
+            {
+                string columName = columns[i][0];
+                dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
+            }
+            return dataGridViewcolumns;
+        }
+       
     }
 }
