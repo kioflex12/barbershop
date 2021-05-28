@@ -10,6 +10,9 @@ namespace barbershop.Tables
     {
         public static string EnumToString(ActiveTables table) => Enum.GetName(typeof(ActiveTables), (int)table);
     }
+    /// <summary>
+    /// Перечисление таблиц
+    /// </summary>
     public enum ActiveTables
     {
         clients,

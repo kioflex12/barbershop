@@ -94,6 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelSaver.cs" />
+    <Compile Include="localization.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>localization.resx</DependentUpon>
+    </Compile>
     <Compile Include="SqlListener.cs" />
     <Compile Include="TableDataSource.cs" />
     <Compile Include="Tables\Clients.cs" />
@@ -119,9 +124,16 @@
     <Compile Include="Tables\Masters.cs" />
     <EmbeddedResource Include="InsertForm.resx">
       <DependentUpon>InsertForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="localization.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>localization.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,15 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="barbershop.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="barbershop_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>barbershop.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

@@ -26,7 +26,7 @@ namespace barbershop
         {
             SqlListener.InitConnection();
 
-            DataSource.SetDataAdditictions(
+            DataSource.SetupTablesData(
                 TableDataSource.tablesData = new Dictionary<ActiveTables, TableDataSource.TableData>()
                 {
                     { ActiveTables.clients,  new TableDataSource.TableData(new Clients(ClientsDataGrid))   },

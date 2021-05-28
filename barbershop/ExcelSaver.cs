@@ -10,6 +10,10 @@ namespace barbershop
 {
     public static class ExcelSaver
     {
+        /// <summary>
+        /// Сохраняет datagrid в excel фал
+        /// </summary>
+        /// <param name="dataGrid"></param>
         public static async void Save(DataGridView dataGrid)
         {
             string name =  $"\\{dataGrid.Name}.xlsx";
@@ -32,6 +36,7 @@ namespace barbershop
                 }
                 
             });
+
             worksheet.Columns.AutoFit();
 
             application.AlertBeforeOverwriting = false;

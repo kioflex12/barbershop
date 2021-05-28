@@ -38,7 +38,7 @@ namespace barbershop.Tables
                 if ((parsedName.Count() > 1) && (Enum.TryParse<ActiveTables>(parsedName[1]+"s", out var tableFromId)))
                 {
                     string getCollectionCommand = $"select full_name from {tableFromId} ";
-                    var column = new DataGridViewComboBoxColumn() { Name = columName };
+                    var column = new DataGridViewComboBoxColumn() { Name = columName, HeaderText = localization.ResourceManager.GetString(columName, localization.Culture) };
                     
                     foreach (var item in SqlListener.GetQueryResult(getCollectionCommand))
                     {
@@ -48,7 +48,7 @@ namespace barbershop.Tables
                     dataGridViewcolumns.Add(column);
                 }
                 else
-                    dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
+                    dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = localization.ResourceManager.GetString(columName, localization.Culture) });
             }
             return dataGridViewcolumns;
         }

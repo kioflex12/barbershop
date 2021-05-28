@@ -15,14 +15,20 @@ namespace barbershop
     {
         public static Dictionary<ActiveTables, TableDataSource.TableData> tables;
        
-
-        public static void SetDataAdditictions(Dictionary<ActiveTables, TableDataSource.TableData> tableDatas)
+        /// <summary>
+        /// Устанавливает словарь таблиц 
+        /// </summary>
+        /// <param name="tablesData"></param>
+        public static void SetupTablesData(Dictionary<ActiveTables, TableDataSource.TableData> tablesData)
         {
-            tables = tableDatas;
+            tables = tablesData;
             
             UpdateDataGridViews();
         }
 
+        /// <summary>
+        /// Обновляет все datagridview на форме
+        /// </summary>
         public static void UpdateDataGridViews()
         {
             foreach (var table in tables.Values)
@@ -40,11 +46,6 @@ namespace barbershop
 
             }
         }
-
-        public static void Insert(string sqlString)
-        {
-            SqlListener.ExecuteQuery(sqlString);
-            UpdateDataGridViews();
-        }
+        
     }
 }

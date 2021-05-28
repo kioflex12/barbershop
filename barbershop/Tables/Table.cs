@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,9 +16,16 @@ namespace barbershop.Tables
         {
             JoinDataGrid = dataGrid;
         }
-        
+        /// <summary>
+        ///  Строка для select запроса sql 
+        /// </summary>
         public virtual string UpdateCommand { get;  }
 
+        /// <summary>
+        /// Получает столбцы для заданной таблицы
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public virtual List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
         {
             List<DataGridViewColumn> dataGridViewcolumns = new List<DataGridViewColumn>();
@@ -25,11 +33,18 @@ namespace barbershop.Tables
             for (int i = 1; i < columns.Count; i++)
             {
                 string columName = columns[i][0];
-                dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = columName });
+                dataGridViewcolumns.Add(new DataGridViewTextBoxColumn() { Name = columName, HeaderText = 
+                    table == ActiveTables.services && columName == "full_name" ? "Наименование" : localization.ResourceManager.GetString(columName, localization.Culture) });
             }
             return dataGridViewcolumns;
         }
 
+        /// <summary>
+        /// Получает строку для insert команды sql 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public string GetInsertString(DataGridViewRow row, ActiveTables table)
         {
             string tableName = EnumConverter.EnumToString(table);
@@ -83,6 +98,12 @@ namespace barbershop.Tables
             return insertString;
         }
 
+        /// <summary>
+        /// Получает delete команду для заданого ключа заданной таблицы 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public string GetDeleteString( string key, ActiveTables table)
         {
             var tableName = EnumConverter.EnumToString(table);

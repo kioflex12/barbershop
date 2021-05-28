@@ -16,11 +16,24 @@ namespace barbershop
 
         private static MySqlConnection _sqlConnection;
         private static readonly string _datePattern = "dd.MM.yyyy";
-
+        
+        /// <summary>
+        /// Устанавливает соединение
+        /// </summary>
         public static void InitConnection()
         {
-            string connectionString = @"server = localhost; user id = root;  database = barbershop; password=123; pooling = false; convert zero datetime=true";
+            //string connectionString = @"server = localhost; user id = root;  database = barbershop; password=123; pooling = false; convert zero datetime=true";
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = "localhost";
+            builder.UserID = "root";
+            builder.Password = "1234";
+            builder.Port = 3306;
+            builder.Database = "barbershop";
 
+
+            //builder.CharacterSet = Encoding.UTF8.ToString();
+            //builder.CharacterSet = "utf8";
+            string connectionString = builder.ConnectionString;
             _sqlConnection = new MySqlConnection(connectionString);
             _sqlConnection.Open();
         }
@@ -29,7 +42,7 @@ namespace barbershop
         {
             string getTypeColumnsCommand = @"select COLUMN_NAME, DATA_TYPE
                                             from INFORMATION_SCHEMA.COLUMNS
-                                            where TABLE_NAME =" + $"'{Table}'";
+                                            where TABLE_NAME =" + $"'{Table}' group by column_name";
 
             return SqlListener.GetQueryResult(getTypeColumnsCommand);
         }
@@ -38,6 +51,8 @@ namespace barbershop
         {
 
             MySqlCommand sqlCommand = new MySqlCommand(query, _sqlConnection);
+
+           
             MySqlDataReader reader = sqlCommand.ExecuteReader();
 
             List<string[]> data = new List<string[]>();
@@ -46,6 +61,7 @@ namespace barbershop
                 data.Add(new string[reader.FieldCount]);
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
+                   
                     //var type = reader[i].GetType();
                     if (DateTime.TryParse(reader[i].ToString(), out var tempDate))
                     {

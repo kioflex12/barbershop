@@ -30,6 +30,7 @@ namespace barbershop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InsertForm));
             this.SaveButton = new System.Windows.Forms.Button();
             this.InsertDataGridView = new System.Windows.Forms.DataGridView();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -39,36 +40,36 @@ namespace barbershop
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(377, 132);
+            resources.ApplyResources(this.SaveButton, "SaveButton");
+            this.errorProvider.SetError(this.SaveButton, resources.GetString("SaveButton.Error"));
+            this.errorProvider.SetIconAlignment(this.SaveButton, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("SaveButton.IconAlignment"))));
+            this.errorProvider.SetIconPadding(this.SaveButton, ((int)(resources.GetObject("SaveButton.IconPadding"))));
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 0;
-            this.SaveButton.Text = "Добавить";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // InsertDataGridView
             // 
+            resources.ApplyResources(this.InsertDataGridView, "InsertDataGridView");
             this.InsertDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.InsertDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.errorProvider.SetError(this.InsertDataGridView, resources.GetString("InsertDataGridView.Error"));
+            this.errorProvider.SetIconAlignment(this.InsertDataGridView, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("InsertDataGridView.IconAlignment"))));
+            this.errorProvider.SetIconPadding(this.InsertDataGridView, ((int)(resources.GetObject("InsertDataGridView.IconPadding"))));
             this.InsertDataGridView.Name = "InsertDataGridView";
-            this.InsertDataGridView.Size = new System.Drawing.Size(338, 150);
-            this.InsertDataGridView.TabIndex = 1;
             this.InsertDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.InsertDataGridView_CellValueChanged);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            resources.ApplyResources(this.errorProvider, "errorProvider");
             // 
             // InsertForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 170);
             this.Controls.Add(this.InsertDataGridView);
             this.Controls.Add(this.SaveButton);
             this.Name = "InsertForm";
-            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.InsertDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
