@@ -24,7 +24,7 @@ namespace barbershop
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SqlListener.InitConnection();
+            new SqlConnector().ShowDialog();
 
             DataSource.SetupTablesData(
                 TableDataSource.tablesData = new Dictionary<ActiveTables, TableDataSource.TableData>()

@@ -41,27 +41,20 @@ namespace barbershop
             // SaveButton
             // 
             resources.ApplyResources(this.SaveButton, "SaveButton");
-            this.errorProvider.SetError(this.SaveButton, resources.GetString("SaveButton.Error"));
-            this.errorProvider.SetIconAlignment(this.SaveButton, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("SaveButton.IconAlignment"))));
-            this.errorProvider.SetIconPadding(this.SaveButton, ((int)(resources.GetObject("SaveButton.IconPadding"))));
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // InsertDataGridView
             // 
-            resources.ApplyResources(this.InsertDataGridView, "InsertDataGridView");
             this.InsertDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.errorProvider.SetError(this.InsertDataGridView, resources.GetString("InsertDataGridView.Error"));
-            this.errorProvider.SetIconAlignment(this.InsertDataGridView, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("InsertDataGridView.IconAlignment"))));
-            this.errorProvider.SetIconPadding(this.InsertDataGridView, ((int)(resources.GetObject("InsertDataGridView.IconPadding"))));
+            resources.ApplyResources(this.InsertDataGridView, "InsertDataGridView");
             this.InsertDataGridView.Name = "InsertDataGridView";
             this.InsertDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.InsertDataGridView_CellValueChanged);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            resources.ApplyResources(this.errorProvider, "errorProvider");
             // 
             // InsertForm
             // 
@@ -69,6 +62,7 @@ namespace barbershop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.InsertDataGridView);
             this.Controls.Add(this.SaveButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "InsertForm";
             ((System.ComponentModel.ISupportInitialize)(this.InsertDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

@@ -16,26 +16,23 @@ namespace barbershop
 
         private static MySqlConnection _sqlConnection;
         private static readonly string _datePattern = "dd.MM.yyyy";
-        
+
+        public static bool ConnectionIsStablish => _sqlConnection != null;
         /// <summary>
         /// Устанавливает соединение
         /// </summary>
-        public static void InitConnection()
+        public static bool InitConnection(string connectionString)
         {
-            //string connectionString = @"server = localhost; user id = root;  database = barbershop; password=123; pooling = false; convert zero datetime=true";
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-            builder.Server = "localhost";
-            builder.UserID = "root";
-            builder.Password = "1234";
-            builder.Port = 3306;
-            builder.Database = "barbershop";
-
-
-            //builder.CharacterSet = Encoding.UTF8.ToString();
-            //builder.CharacterSet = "utf8";
-            string connectionString = builder.ConnectionString;
-            _sqlConnection = new MySqlConnection(connectionString);
-            _sqlConnection.Open();
+            try
+            {
+                _sqlConnection = new MySqlConnection(connectionString);
+                _sqlConnection.Open();
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
         }
 
         public static List<string[]> GetTableColumns(string Table)
