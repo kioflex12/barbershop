@@ -52,6 +52,10 @@ namespace barbershop
                 errorProvider.SetError(InsertDataGridView, "заполните все ячейки");
         }
 
+        /// <summary>
+        /// Проверяет все значения на пустые поля
+        /// </summary>
+        /// <returns></returns>
         private bool CheckFildComplete()
         {
             for (int i = 0; i < InsertDataGridView.Rows.Count - 1; i++)

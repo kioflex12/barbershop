@@ -13,7 +13,8 @@ namespace barbershop.Tables
         {
         }
 
-        public override string UpdateCommand => @"SELECT orders.id_order, services.full_name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
+      
+        public override string SelectCommand => @"SELECT orders.id_order, services.full_name, services.price, clients.full_name, orders.date_of_service, masters.full_name AS master
                                                   FROM orders 
                                                   INNER JOIN services 
                                                   ON 
@@ -25,6 +26,7 @@ namespace barbershop.Tables
                                                   ON 
                                                   orders.id_client = clients.id_client";
 
+        
         public override List<DataGridViewColumn> GetColumnForDataGridView(ActiveTables table)
         {
             var tableName = Tables.EnumConverter.EnumToString(table);

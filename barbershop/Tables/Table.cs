@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace barbershop.Tables
 {
+    /// <summary>
+    /// Класс таблица
+    /// </summary>
     public class Table
     {
         public DataGridView JoinDataGrid { get; set; }
@@ -17,9 +20,9 @@ namespace barbershop.Tables
             JoinDataGrid = dataGrid;
         }
         /// <summary>
-        ///  Строка для select запроса sql 
+        ///  Получает select запрос sql 
         /// </summary>
-        public virtual string UpdateCommand { get;  }
+        public virtual string SelectCommand { get;  }
 
         /// <summary>
         /// Получает столбцы для заданной таблицы

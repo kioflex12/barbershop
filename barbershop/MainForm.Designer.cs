@@ -30,8 +30,8 @@ namespace barbershop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -142,9 +142,9 @@ namespace barbershop
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn1.HeaderText = "ID Клиента";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -160,9 +160,9 @@ namespace barbershop
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn3.HeaderText = "Дата рождения";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -190,10 +190,11 @@ namespace barbershop
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
+            this.MastersDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MastersDataGrid.Location = new System.Drawing.Point(3, 3);
             this.MastersDataGrid.Name = "MastersDataGrid";
             this.MastersDataGrid.ReadOnly = true;
-            this.MastersDataGrid.Size = new System.Drawing.Size(553, 408);
+            this.MastersDataGrid.Size = new System.Drawing.Size(916, 427);
             this.MastersDataGrid.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn4
@@ -246,10 +247,11 @@ namespace barbershop
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11});
-            this.ServicesDataGrid.Location = new System.Drawing.Point(6, 6);
+            this.ServicesDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ServicesDataGrid.Location = new System.Drawing.Point(3, 3);
             this.ServicesDataGrid.Name = "ServicesDataGrid";
             this.ServicesDataGrid.ReadOnly = true;
-            this.ServicesDataGrid.Size = new System.Drawing.Size(553, 408);
+            this.ServicesDataGrid.Size = new System.Drawing.Size(916, 427);
             this.ServicesDataGrid.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn9
@@ -293,10 +295,11 @@ namespace barbershop
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17});
+            this.OrdersDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrdersDataGrid.Location = new System.Drawing.Point(3, 3);
             this.OrdersDataGrid.Name = "OrdersDataGrid";
             this.OrdersDataGrid.ReadOnly = true;
-            this.OrdersDataGrid.Size = new System.Drawing.Size(646, 408);
+            this.OrdersDataGrid.Size = new System.Drawing.Size(916, 427);
             this.OrdersDataGrid.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn12
@@ -337,20 +340,22 @@ namespace barbershop
             // 
             // printButton
             // 
-            this.printButton.Location = new System.Drawing.Point(6, 401);
+            this.printButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.printButton.Location = new System.Drawing.Point(0, 331);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(62, 23);
+            this.printButton.Size = new System.Drawing.Size(76, 36);
             this.printButton.TabIndex = 4;
-            this.printButton.Text = "Печать";
+            this.printButton.Text = "Сохранить";
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // InsertButton
             // 
+            this.InsertButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.InsertButton.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InsertButton.Location = new System.Drawing.Point(16, 289);
+            this.InsertButton.Location = new System.Drawing.Point(0, 367);
             this.InsertButton.Name = "InsertButton";
-            this.InsertButton.Size = new System.Drawing.Size(40, 43);
+            this.InsertButton.Size = new System.Drawing.Size(76, 43);
             this.InsertButton.TabIndex = 1;
             this.InsertButton.Text = "+";
             this.InsertButton.UseVisualStyleBackColor = true;
@@ -358,10 +363,11 @@ namespace barbershop
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DeleteButton.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteButton.Location = new System.Drawing.Point(16, 338);
+            this.DeleteButton.Location = new System.Drawing.Point(0, 410);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(40, 40);
+            this.DeleteButton.Size = new System.Drawing.Size(76, 49);
             this.DeleteButton.TabIndex = 3;
             this.DeleteButton.Text = "-";
             this.DeleteButton.UseVisualStyleBackColor = true;

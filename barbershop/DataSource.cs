@@ -35,7 +35,7 @@ namespace barbershop
             {
                 table.TableSource.JoinDataGrid.Rows.Clear();
 
-                var data = SqlListener.GetQueryResult(table.TableSource.UpdateCommand);
+                var data = SqlListener.GetQueryResult(table.TableSource.SelectCommand);
                
                 
                 foreach (string[] s in data)

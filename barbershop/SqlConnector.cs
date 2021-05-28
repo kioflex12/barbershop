@@ -46,7 +46,11 @@ namespace barbershop
             else
                 errorProvider.SetError(ConnectButton, "Не удалось установить соединение");
         }
-
+        
+        /// <summary>
+        /// Получает строку подключения
+        /// </summary>
+        /// <returns></returns>
         private string GetStringConnection()
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

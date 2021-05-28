@@ -51,6 +51,7 @@ namespace barbershop
             this.ServerTextBox.Name = "ServerTextBox";
             this.ServerTextBox.Size = new System.Drawing.Size(173, 20);
             this.ServerTextBox.TabIndex = 0;
+            this.ServerTextBox.Text = "localhost";
             // 
             // PortTextBox
             // 
@@ -58,6 +59,7 @@ namespace barbershop
             this.PortTextBox.Name = "PortTextBox";
             this.PortTextBox.Size = new System.Drawing.Size(173, 20);
             this.PortTextBox.TabIndex = 1;
+            this.PortTextBox.Text = "3306";
             // 
             // UserIDTextBox
             // 
@@ -65,6 +67,7 @@ namespace barbershop
             this.UserIDTextBox.Name = "UserIDTextBox";
             this.UserIDTextBox.Size = new System.Drawing.Size(173, 20);
             this.UserIDTextBox.TabIndex = 2;
+            this.UserIDTextBox.Text = "root";
             // 
             // PasswordTextBox
             // 
@@ -80,6 +83,7 @@ namespace barbershop
             this.DataBaseTextBox.Name = "DataBaseTextBox";
             this.DataBaseTextBox.Size = new System.Drawing.Size(173, 20);
             this.DataBaseTextBox.TabIndex = 4;
+            this.DataBaseTextBox.Text = "barbershop";
             // 
             // ServerLabel
             // 
@@ -157,6 +161,7 @@ namespace barbershop
             this.Controls.Add(this.PortTextBox);
             this.Controls.Add(this.ServerTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "SqlConnector";
             this.Text = "Присоединение к MySQL";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SqlConnector_FormClosing);

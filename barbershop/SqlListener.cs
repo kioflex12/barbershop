@@ -13,7 +13,6 @@ namespace barbershop
 {
     public static class SqlListener
     {
-
         private static MySqlConnection _sqlConnection;
         private static readonly string _datePattern = "dd.MM.yyyy";
 
@@ -35,6 +34,11 @@ namespace barbershop
             }
         }
 
+        /// <summary>
+        /// Получает столбца заданной таблицы
+        /// </summary>
+        /// <param name="Table"></param>
+        /// <returns></returns>
         public static List<string[]> GetTableColumns(string Table)
         {
             string getTypeColumnsCommand = @"select COLUMN_NAME, DATA_TYPE
@@ -44,6 +48,11 @@ namespace barbershop
             return SqlListener.GetQueryResult(getTypeColumnsCommand);
         }
 
+        /// <summary>
+        /// Получает результат выполнения sql запроса
+        /// </summary>
+        /// <param name="query">sql запрос</param>
+        /// <returns></returns>
         public static List<string[]> GetQueryResult(string query)
         {
 
@@ -73,6 +82,10 @@ namespace barbershop
             return data;
         }
 
+        /// <summary>
+        /// Выполняет sql команду
+        /// </summary>
+        /// <param name="query">sql команда</param>
         public static void ExecuteQuery(string query)
         {
             MySqlCommand sqlCommand = new MySqlCommand(query, _sqlConnection);

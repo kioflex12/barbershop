@@ -39,7 +39,10 @@ namespace barbershop
             SetNewTable();
 
         }
-
+        
+        /// <summary>
+        /// Устанавливает новую таблицу
+        /// </summary>
         private void SetNewTable()
         {
             _currentTable = (ActiveTables)TabControl.SelectedIndex;

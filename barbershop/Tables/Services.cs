@@ -12,6 +12,6 @@ namespace barbershop.Tables
         public Services(DataGridView dataGrid) : base(dataGrid)
         {
         }
-        public override string UpdateCommand => "select * from Services";
+        public override string SelectCommand => "select * from Services";
     }
 }

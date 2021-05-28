@@ -16,10 +16,8 @@ namespace barbershop.Tables.DataSource
         [Serializable]
         public class TableData
         {
-            //string s = localization.date_of_birth;
             public TableData(Table tableSource)
             {
-                //this.Table = table;
                 this.TableSource = tableSource;
             }
             public Table TableSource;

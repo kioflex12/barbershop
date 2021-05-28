@@ -14,6 +14,6 @@ namespace barbershop.Tables
         {
         }
        
-        public override string UpdateCommand => "select * from Clients";
+        public override string SelectCommand => "select * from Clients";
     }
 }
