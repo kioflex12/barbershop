@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,41 +17,44 @@ namespace barbershop
         /// Сохраняет datagrid в excel фал
         /// </summary>
         /// <param name="dataGrid"></param>
-        public static async void Save(DataGridView dataGrid)
+        public static void SaveToCSV(DataGridView DGV)
         {
-            string name =  $"\\{dataGrid.Name}.xlsx";
-            Excel.Application application = new Excel.Application();
-            Excel.Workbook workbook = application.Workbooks.Add();
-            Excel.Worksheet worksheet = workbook.ActiveSheet;
-            
-            await Task.Run(() =>
+            string filename = "";
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV (*.csv)|*.csv";
+            sfd.FileName = "Output.csv";
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                for (int i = 0; i < dataGrid.ColumnCount; i++)
+                if (File.Exists(filename))
                 {
-                    worksheet.Rows[1].Columns[i+1] = dataGrid.Columns[i].HeaderText;
-                }
-                for (int i = 0; i < dataGrid.RowCount; i++)
-                {
-                    for (int j = 0; j < dataGrid.ColumnCount; j++)
+                    try
                     {
-                        worksheet.Rows[i + 2].Columns[j + 1] = dataGrid.Rows[i].Cells[j].Value;
+                        File.Delete(filename);
+                    }
+                    catch (IOException ex)
+                    {
+                        MessageBox.Show("Сохранение не удалось завершить" + ex.Message);
                     }
                 }
-                
-            });
-
-            worksheet.Columns.AutoFit();
-
-            application.AlertBeforeOverwriting = false;
-            var folderBrower = new FolderBrowserDialog();
-            if (folderBrower.ShowDialog() == DialogResult.OK)
-            {
-                workbook.SaveAs(folderBrower.SelectedPath + name);
+                int columnCount = DGV.ColumnCount;
+                string columnNames = "";
+                string[] output = new string[DGV.RowCount + 1];
+                for (int i = 0; i < columnCount; i++)
+                {
+                    columnNames += DGV.Columns[i].HeaderText.ToString() + ";";
+                }
+                output[0] += columnNames;
+                for (int i = 1; (i - 1) < DGV.RowCount; i++)
+                {
+                    for (int j = 0; j < columnCount; j++)
+                    {
+                        output[i] += DGV.Rows[i - 1].Cells[j].Value.ToString() + ";";
+                    }
+                }
+                System.IO.File.WriteAllLines(sfd.FileName, output, System.Text.Encoding.UTF8);
                 MessageBox.Show("Сохранено");
-               
             }
-            application.Quit();
-
         }
+
     }
 }

@@ -74,7 +74,7 @@ namespace barbershop
 
         private void PrintButton_Click(object sender, EventArgs e)
         {
-            ExcelSaver.Save(_currentDataGrid);
+            ExcelSaver.SaveToCSV(_currentDataGrid);
         }
 
       
